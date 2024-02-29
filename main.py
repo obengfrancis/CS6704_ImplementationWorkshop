@@ -25,6 +25,21 @@ sql_command_3 = """CREATE TABLE Communities (
 users VARCHAR(20),
 posts VARCHAR(20));
 """
+sql_command_4 = """ CREATE TABLE CommunityMembers (
+    userId INTEGER,
+    communityId INTEGER,
+    PRIMARY KEY(userId, communityId),
+    FOREIGN KEY(userId) REFERENCES Users(userId),
+    FOREIGN KEY(communityId) REFERENCES Communities(communityId));
+"""
+
+sql_command_5 = """CREATE TABLE CommunityPosts (
+    postId INTEGER,
+    communityId INTEGER,
+    PRIMARY KEY(postId, communityId),
+    FOREIGN KEY(postId) REFERENCES Post(postId),
+    FOREIGN KEY(communityId) REFERENCES Communities(communityId));
+"""
 
 sql_drop_user_table = "DROP TABLE IF EXISTS Users;"
 sql_drop_post_table = "DROP TABLE IF EXISTS Post;"
